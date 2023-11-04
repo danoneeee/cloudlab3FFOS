@@ -1,4 +1,4 @@
-name: Docker to DH
+name: Docker image to docker hub
 
 on: 
   push:
@@ -6,7 +6,7 @@ on:
       - 'main'
 jobs:
   push_to_docker_hub:
-    name: Push image to DH
+    name: Push image to Docker hub
     runs-on: ubuntu-latest
     steps:
       - name: checkout out the repo 
@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.LOGIN_DOCKER }}
           password: ${{ secrets.PASSWORD_DOCKER }}
 
-      - name: build and push
+      - name: build image and push
         uses: docker/build-push-action@v5
         with:
           context: .
